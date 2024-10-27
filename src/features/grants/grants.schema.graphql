@@ -6,4 +6,5 @@ type Grant {
 
 type Query {
   grants: [Grant!]
+  searchGrants(name: String, minValue: Int, maxValue: Int): [Grant!]
 }

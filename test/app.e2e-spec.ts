@@ -104,5 +104,22 @@ describe('Vee app (e2e)', () => {
 
     expect(newOpenGrants.length).toBeLessThan(openGrants.length);
     expect(acceptedGrants.length).toBeGreaterThan(0);
+  });
+
+  it('should search grants', async () => {
+    const res = await request(app.getHttpServer())
+      .post('/graphql')
+      .send({
+        query: `{
+          searchGrants(name: "Zotos", maxValue: 10000000) {
+            id
+            name
+            averageAmount
+          }
+        }`
+      })
+      .expect(200);
+
+    expect(res.body.data.searchGrants.length).toBeGreaterThan(0);
   })
 });
