@@ -1,0 +1,9 @@
+type Grant {
+  id: String!
+  name: String!
+  averageAmount: Float!
+}
+
+type Query {
+  grants: [Grant!]
+}

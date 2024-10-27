@@ -1,0 +1,18 @@
+enum GrantMatchResponseType {
+  open
+  accepted
+  rejected
+}
+
+type GrantMatch {
+  tenantId: String!
+  grantId: String!
+  feedback: String!
+  response: GrantMatchResponseType!
+
+  grant: Grant
+}
+
+type Mutation {
+  respond(tenantId: String!, grantId: String!, feedback: String!, response: GrantMatchResponseType!): GrantMatch
+}

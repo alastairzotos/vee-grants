@@ -1,0 +1,11 @@
+type Tenant {
+  id: String!
+  openGrants: [GrantMatch!]
+  acceptedGrants: [GrantMatch!]
+  rejectedGrants: [GrantMatch!]
+}
+
+extend type Query {
+  tenants: [Tenant!]
+  tenant(id: ID!): Tenant!
+}
