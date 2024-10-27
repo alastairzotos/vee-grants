@@ -3,6 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { Grant, Tenant } from 'src/graphql';
+import { SeedService } from 'src/seed/seed.service';
 
 describe('Vee app (e2e)', () => {
   let app: INestApplication;
@@ -16,6 +17,8 @@ describe('Vee app (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
+
+    await app.get(SeedService).seed();
   });
 
   it('should get the tenants', async () => {
